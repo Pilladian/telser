@@ -11,6 +11,7 @@ import (
 
 // GLOBAL VARIABLES
 var BOT_TOKEN string
+var AUTH_USERS map[string]string
 var PORT int = 8080
 var PATH string = "./telser"
 
@@ -19,6 +20,10 @@ func initialize(token string) {
 	helper.CreatePath(PATH + "/logs")
 	logger.SetLogFilename("./telser/logs/main.log")
 	BOT_TOKEN = token
+
+	// add authorized users
+	AUTH_USERS = make(map[string]string)
+	AUTH_USERS["AUTH_USER_1"] = "AUTH_USER_1_PASSWORD"
 }
 
 func main() {
