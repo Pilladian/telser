@@ -15,11 +15,13 @@ var AUTH_USERS map[string]string
 var PORT int = 8080
 var PATH string = "./telser"
 
-func initialize(token string) {
+func initialize() {
 	helper.CreatePath(PATH)
 	helper.CreatePath(PATH + "/logs")
 	logger.SetLogFilename("./telser/logs/main.log")
-	BOT_TOKEN = token
+
+	// Set Bot Token
+	BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN_GOES_HERE"
 
 	// add authorized users
 	AUTH_USERS = make(map[string]string)
@@ -27,7 +29,7 @@ func initialize(token string) {
 }
 
 func main() {
-	initialize("YOUR_TELEGRAM_BOT_TOKEN_GOES_HERE")
+	initialize()
 
 	// http request handler
 	http.HandleFunc("/", rootRequestHandler)
